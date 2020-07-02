@@ -11,7 +11,7 @@ export default function DefaultButton(props) {
         ButtonComponent = TouchableNativeFeedback;
     }
     return (
-        <ButtonComponent>
+        <ButtonComponent onPress={props.onClick}>
             <View style={styles.button}>
                 <DefaultText style={styles.buttonText}>{props.title}</DefaultText>
             </View>
@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'green',
         padding: 8,
         borderRadius: 5,
+        minWidth: 50,
+        maxWidth: 300,
         // shadowColor: 'black',
         // shadowOpacity: 0.25,
         // shadowOffset: {width: 0, height: 2},
@@ -33,5 +35,6 @@ const styles = StyleSheet.create({
     buttonText: {
         color: Colors.buttonTextColor,
         fontSize: 22,
+        textAlign: 'center'
     },
 })

@@ -6,7 +6,7 @@ import HomeScreen from "./components/HomeScreen";
 
 export default function App() {
     let [fontsLoaded] = useFonts({
-        "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+        "inter-bold": require("./assets/fonts/Inter-Bold.otf"),
     });
 
     if (!fontsLoaded) {
