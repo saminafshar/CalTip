@@ -1,27 +1,17 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Slider} from 'react-native-elements';
+import React from "react";
+import {useFonts} from '@use-expo/font';
+import {AppLoading} from "expo";
 
+import HomeScreen from "./components/HomeScreen";
 
 export default function App() {
-    const [currentValue, setValue] = useState(0);
-    return (
-        <View style={styles.container}>
-            <Text>Value: {currentValue}</Text>
-            <Slider style={styles.slider} value={currentValue} onValueChange={(value) => setValue(value)}/>
-        </View>
-    )
-        ;
-}
+    let [fontsLoaded] = useFonts({
+        "open-sans-bold": require("./assets/fonts/OpenSans-Bold.ttf"),
+    });
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    slider: {
-        width: '80%'
+    if (!fontsLoaded) {
+        return <AppLoading/>;
+    } else {
+        return <HomeScreen/>;
     }
-});
+}
