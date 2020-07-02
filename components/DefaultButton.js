@@ -1,16 +1,21 @@
 import React from "react";
-import {StyleSheet, TouchableOpacity, View} from "react-native";
 import Colors from "../constants/Colors";
 import DefaultText from "./DefaultText";
+import {Platform, StyleSheet, TouchableNativeFeedback, TouchableOpacity, View} from "react-native";
 
 export default function DefaultButton(props) {
 
+    let ButtonComponent = TouchableOpacity;
+
+    if (Platform.OS === "android" && Platform.Version >= 21) {
+        ButtonComponent = TouchableNativeFeedback;
+    }
     return (
-        <TouchableOpacity>
+        <ButtonComponent>
             <View style={styles.button}>
                 <DefaultText style={styles.buttonText}>{props.title}</DefaultText>
             </View>
-        </TouchableOpacity>
+        </ButtonComponent>
     )
 }
 
